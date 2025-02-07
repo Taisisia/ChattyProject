@@ -10,13 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginTest extends BaseTest {
     @Test
-    public void fieldIsDisplayed (){
+    public void fieldIsDisplayed() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.emailIsDisplayed();
         loginPage.passwordIsDisplayed();
     }
+
     @Test
-    public void successLoginValidData(){
+    public void successLoginValidData() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail("John2000@gmail.com");
         loginPage.enterPassword("ukraine25");

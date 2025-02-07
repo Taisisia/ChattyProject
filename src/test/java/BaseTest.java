@@ -13,7 +13,7 @@ public class BaseTest {
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }

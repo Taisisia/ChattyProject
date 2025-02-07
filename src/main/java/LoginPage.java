@@ -43,8 +43,7 @@ public class LoginPage {
     public void enterPassword (String passwordValue){
         passwordInputField.sendKeys(passwordValue);
     }
-    public void clickOnLoginButton()
-    {
+    public void clickOnLoginButton() {
         loginButton.click();
     }
 
