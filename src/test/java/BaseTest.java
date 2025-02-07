@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
     ChromeDriver driver;
+
     @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver",

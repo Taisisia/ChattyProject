@@ -21,7 +21,6 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail("John2000@gmail.com");
         loginPage.enterPassword("ukraine25");
-
         loginPage.clickOnLoginButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/homeblog"));
