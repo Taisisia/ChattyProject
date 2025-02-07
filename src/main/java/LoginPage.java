@@ -46,7 +46,7 @@ public class LoginPage {
     public void clickOnLoginButton()
     {
         loginButton.click();
-    }//public void successLogin (String emailValue, String passwordValue){
+    }
 
 }
 
