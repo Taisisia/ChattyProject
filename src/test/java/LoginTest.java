@@ -1,14 +1,13 @@
 import org.junit.jupiter.api.Test;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-
-
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginTest extends BaseTest {
+    LoginPage loginPage = new LoginPage(driver);
+
     @Test
     public void fieldIsDisplayed() {
         LoginPage loginPage = new LoginPage(driver);
@@ -27,4 +26,46 @@ public class LoginTest extends BaseTest {
         assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
 
     }
+
+    @Test
+    public void invalidEmail() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail("invalidEmail@gmail.com");
+        loginPage.enterPassword("ukraine25");
+        loginPage.clickOnLoginButton();
+        loginPage.checkTextError("User not found. Please register.");
+    }
+    @Test
+    void loginWithEmptyEmail()  {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterPassword("ukraine25");
+        loginPage.checkLoginButtonDisabled();
+    }
+
+    @Test
+    public void invalidPassword() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterPassword("Ukraine100");
+        loginPage.clickOnLoginButton();
+        loginPage.checkTextError("An error occurred while logging in. Please try again later");
+    }
+
+
+    @Test
+    void loginEmptyPassword() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.clickOnLoginButton();
+        loginPage.checkTextError("Invalid email or password. Please try again.");
+
+    }
+
+    @Test
+    void loginWithEmptyEmailAndPassword() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.checkLoginButtonDisabled();
+
+    }
+
 }
