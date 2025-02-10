@@ -41,6 +41,13 @@ public class LoginPage {
     @FindBy(css = ".password-eye")
     private WebElement passwordEye;
 
+    @FindBy(css = "#root > div > div > p")
+    private WebElement linkUndTextNotRegistered;
+
+    @FindBy (css = "#root > div > div > form > p > a")
+    private WebElement linkSingUp;
+
+
 
     public void emailIsDisplayed() {
         assertTrue(emailInputField.isDisplayed());
@@ -81,12 +88,18 @@ public class LoginPage {
     }
 
     public void checkVerifyPasswordMasking() {
-      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-      //  wait.until(ExpectedConditions.visibilityOf(emailInputField));//passwordInputField)).sendKeys();
+        //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //  wait.until(ExpectedConditions.visibilityOf(emailInputField));//passwordInputField)).sendKeys();
         String fieldType = passwordInputField.getAttribute("type");
         assertEquals("password", fieldType);
     }
 
+    public void checkLinkUndTextNotRegisteredNotDisplayed() {
+        assertFalse(linkUndTextNotRegistered.isDisplayed());
+    }
+    public void clickLinkSingUp (){
+        linkSingUp.click();
+    }
 }
 
 
