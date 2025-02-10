@@ -4,9 +4,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class LoginTest extends BaseTest {
-    LoginPage loginPage = new LoginPage(driver);
+
 
     @Test
     public void fieldIsDisplayed() {
@@ -67,5 +66,27 @@ public class LoginTest extends BaseTest {
         loginPage.checkLoginButtonDisabled();
 
     }
+    @Test
+    void verifyPasswordMasking () {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterPassword("Ukraine100");
+        loginPage.checkVerifyPasswordMasking();
+    }
 
+    @Test
+    void loginWithSpacesInEmail() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail("                  ");
+        loginPage.enterPassword("Ukraine100");
+        loginPage.checkLoginButtonDisabled();
+    }
+    @Test
+    void loginWithSpacesInPassword() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterPassword("          ");
+        loginPage.checkLoginButtonDisabled();
+    }
+    // переход на страницу
+    // отсутвутствует строница
 }

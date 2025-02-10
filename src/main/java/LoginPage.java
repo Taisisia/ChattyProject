@@ -38,7 +38,8 @@ public class LoginPage {
     @FindBy(xpath = "//*[contains(text(), 'An error occurred while logging in. Please try again later')]")
     private WebElement textErrorInvalidPassword;
 
-
+    @FindBy(css = ".password-eye")
+    private WebElement passwordEye;
 
 
     public void emailIsDisplayed() {
@@ -68,15 +69,23 @@ public class LoginPage {
         System.out.println(textErrorValue);
         System.out.println(textError.getText());
     }
-    public void checkLoginButtonDisabled (){
+
+    public void checkLoginButtonDisabled() {
         assertFalse(loginButton.isEnabled());
     }
+
     public void checkTextErrorInvalidPassword(String textErrorValue) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement errorElement = wait.until(ExpectedConditions.visibilityOf(textErrorInvalidPassword));
         assertEquals(textErrorValue, textErrorInvalidPassword.getText());
     }
 
+    public void checkVerifyPasswordMasking() {
+      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      //  wait.until(ExpectedConditions.visibilityOf(emailInputField));//passwordInputField)).sendKeys();
+        String fieldType = passwordInputField.getAttribute("type");
+        assertEquals("password", fieldType);
+    }
 
 }
 
