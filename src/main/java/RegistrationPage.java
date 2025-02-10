@@ -1,8 +1,14 @@
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RegistrationPage {
@@ -26,7 +32,9 @@ public class RegistrationPage {
     private  WebElement registrationButton;
 
     @FindBy  (css = ".text-error")
-    private WebElement textError;
+    private WebElement textErrorEmailAlreadyExists;
+
+
     public void enterEmailInputField (String emailValue){
         emailInputField.sendKeys(emailValue);
     }
@@ -41,6 +49,11 @@ public class RegistrationPage {
     }
     public void checkRegistrationButtonDisabled() {
         assertFalse(registrationButton.isEnabled());
+    }
+    public void checkTextErrorEmailAlreadyExists(String textErrorEmailAlreadyExistsValue) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement errorElement = wait.until(ExpectedConditions.visibilityOf(textErrorEmailAlreadyExists));
+        assertEquals(textErrorEmailAlreadyExistsValue, textErrorEmailAlreadyExists.getText());
     }
 
 }

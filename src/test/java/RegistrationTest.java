@@ -27,7 +27,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
-    void registrationWithEmailMissingComSuffix(){
+    void registrationWithEmailMissingComSuffix() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLinkSingUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
@@ -36,8 +36,9 @@ public class RegistrationTest extends BaseTest {
         registrationPage.enterConfirmPasswordInputField("ukraine25");
         registrationPage.checkRegistrationButtonDisabled();
     }
+
     @Test
-    void  registrationWithInvalidEmailMissingAtSymbol(){
+    void registrationWithInvalidEmailMissingAtSymbol() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLinkSingUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
@@ -56,6 +57,7 @@ public class RegistrationTest extends BaseTest {
         registrationPage.enterConfirmPasswordInputField("ukraine25");
         registrationPage.checkRegistrationButtonDisabled();
     }
+
     @Test
     void registrationWithExistingEmail() {
         LoginPage loginPage = new LoginPage(driver);
@@ -64,6 +66,41 @@ public class RegistrationTest extends BaseTest {
         registrationPage.enterEmailInputField("2000John@gmail.com");
         registrationPage.enterPasswordInputField("ukraine25");
         registrationPage.enterConfirmPasswordInputField("ukraine25");
+        registrationPage.clickRegistrationButton();
+        registrationPage.checkTextErrorEmailAlreadyExists("Email already exists!");
     }
 
+    @Test
+    void registrationWithEmptyPassword() {
+    }
+
+    @Test
+    void registrationWithMismatchedPasswords() {
+    }
+
+    @Test
+    void registrationWithShortPassword() {
+    }
+
+    @Test
+    void registrationWithLongPassword() {
+    }
+
+    @Test
+    void registrationWithEmptyFields() {}
+
+    @Test
+    void registrationWithSpacesInFields() {}
+    @Test
+    void registrationButtonIsDisabledWhenFieldsAreEmpty() {}
+
+    @Test
+    void verifyLoginLinkNavigatesToLoginPage() {}
+    @Test
+    void verifySignInLinkContactUsNotDisplayed() {}
+
+    @Test
+    void verifySignInLinkAboutUsNotDisplayed() {}
 }
+
+
