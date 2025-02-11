@@ -40,6 +40,8 @@ public class LoginPage {
 
     @FindBy(css = ".password-eye")
     private WebElement passwordEye;
+    @FindBy(css="#root > div > div > form > p > a")
+    private WebElement linkSignUp;
 
 
     public void emailIsDisplayed() {
@@ -86,7 +88,9 @@ public class LoginPage {
         String fieldType = passwordInputField.getAttribute("type");
         assertEquals("password", fieldType);
     }
-
+     public void clickLinkSignUp(){
+        linkSignUp.click();
+}
 }
 
 

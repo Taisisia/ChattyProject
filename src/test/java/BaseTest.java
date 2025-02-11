@@ -8,7 +8,8 @@ public class BaseTest {
     @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\User\\OneDrive\\Документы\\Lessons\\QA\\chromedriver-win64\\chromedriver-win64_133.0.6943.53\\chromedriver.exe");
+                "C:\\Users\\User\\Desktop\\chromedriver-win64\\chromedriver.exe");
+        //"C:\\Users\\User\\Desktop\\chromedriver-win64 (1)\\chromedriver-win64\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("http://chatty.telran-edu.de:8089/login");
     }
