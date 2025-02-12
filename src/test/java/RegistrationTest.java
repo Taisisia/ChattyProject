@@ -148,6 +148,8 @@ void successfulRegistrationWithValidData() throws InterruptedException {
 
     @Test
     void verifyLoginLinkNavigatesToLoginPage(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLinkSignUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.checkLoginLinkNavigatesToLoginPage();
     }

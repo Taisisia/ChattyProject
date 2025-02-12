@@ -34,17 +34,15 @@ public class RegistrationPage {
     @FindBy(css = ".text-error")
     private WebElement textErrorEmailAlreadyExists;
 
-      @FindBy(css = "[value='user']")
-      private WebElement optionValue;
-      @FindBy(css = "[#root > div > div > form > div.user-info > p:nth-child(1) > a]")
-      private WebElement linkContactUs;
-     @FindBy(css = "[href='about']")
-      private WebElement linkAboutUs;
-     @FindBy(css = "[href='login']")
-     private WebElement linkLogin;
 
-//     @FindBy(css = "#root > div > div > form > p > a")
-//     private WebElement linkSignUp;;
+    @FindBy(css = "[href='/about']")
+    private WebElement linkContactUs;
+    @FindBy(css = "[href='/about']")
+    private WebElement linkAboutUs;
+    @FindBy(css = "[href='/login']")
+    private WebElement linkLogin;
+
+
 
     public void enterEmailInputField(String emailValue) {
         emailInputField.sendKeys(emailValue);
@@ -75,16 +73,14 @@ public class RegistrationPage {
     }
 
     public  void checkLinkContactUsNotDisplayed(){
-        linkContactUs.click();
-
-
+        assertFalse(linkContactUs.isDisplayed());
     }
     public void checkLinkAboutUsNotDisplayed(){
-        linkAboutUs.click();
+        assertFalse(linkAboutUs.isDisplayed());
     }
     public void checkLoginLinkNavigatesToLoginPage(){
         linkLogin.click();
-
+        assertEquals("http://chatty.telran-edu.de:8089/login", driver.getCurrentUrl());
     }
 
 }
