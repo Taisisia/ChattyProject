@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void successLoginValidData() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -44,7 +44,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void invalidPassword() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("Ukraine100");
         loginPage.clickOnLoginButton();
         loginPage.checkTextError("An error occurred while logging in. Please try again later");
@@ -54,7 +54,7 @@ public class LoginTest extends BaseTest {
     @Test
     void loginEmptyPassword() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.clickOnLoginButton();
         loginPage.checkTextError("Invalid email or password. Please try again.");
 
@@ -83,7 +83,7 @@ public class LoginTest extends BaseTest {
     @Test
     void loginWithSpacesInPassword() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("          ");
         loginPage.checkLoginButtonDisabled();
     }
@@ -97,7 +97,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void redirectToHomePageAfterSuccessfulLogin() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
