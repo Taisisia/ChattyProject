@@ -11,12 +11,11 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
     WebDriver driver;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @FindBy(css = "[name='email']")
@@ -45,10 +44,11 @@ public class LoginPage {
     @FindBy(css = "#root > div > div > p")
     private WebElement linkUndTextNotRegistered;
 
-    @FindBy (css = "#root > div > div > form > p > a")
-    private WebElement linkSingUp;
+    @FindBy(css = "#root > div > div > form > p > a")
+    private WebElement linkSignUp;
 
-
+    @FindBy(css = "[src=\"/Header/logo1.svg\"]")
+    private WebElement headerLogo;
 
     public void emailIsDisplayed() {
         assertTrue(emailInputField.isDisplayed());
@@ -98,10 +98,19 @@ public class LoginPage {
     public void checkLinkUndTextNotRegisteredNotDisplayed() {
         assertFalse(linkUndTextNotRegistered.isDisplayed());
     }
-    public void clickLinkSingUp (){
-        linkSingUp.click();
+
+    public void clickLinkSignUp() {
+        linkSignUp.click();
     }
 
+    public void successLogin(String emailValue, String passwordValue) {
+        enterTextToElement(emailValue, emailInputField);
+        enterTextToElement(passwordValue, passwordInputField);
+        clickToElement(loginButton);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(headerLogo));
+        headerLogo.isDisplayed();
+    }
 }
 
 

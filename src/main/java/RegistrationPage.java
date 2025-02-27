@@ -55,5 +55,73 @@ public class RegistrationPage {
         WebElement errorElement = wait.until(ExpectedConditions.visibilityOf(textErrorEmailAlreadyExists));
         assertEquals(textErrorEmailAlreadyExistsValue, textErrorEmailAlreadyExists.getText());
     }
+    //??______________________________________________________________
+//    @FindBy(css = "[name='email']")
+//    private WebElement emailInputField;
+//
+//    @FindBy(css = "[name='password']")
+//    private WebElement passwordInputField;
+//
+//    @FindBy(css = "[name='confirmPassword']")
+//    private WebElement confirmPasswordInputField;
+//
+//    @FindBy(css = ".registration-btn")
+//    private WebElement registrationButton;
+//
+//    @FindBy(css = ".text-error")
+//    private WebElement textErrorEmailAlreadyExists;
+//
+//      @FindBy(css = "[value='user']")
+//      private WebElement optionValue;
+      @FindBy(css = "[href='/about']")
+      private WebElement linkContactUs;
+     @FindBy(css = "[href='/about']")
+      private WebElement linkAboutUs;
+     @FindBy(css = "[href='/login']")
+     private WebElement linkLogin;
+//
+////     @FindBy(css = "#root > div > div > form > p > a")
+////     private WebElement linkSignUp;;
+//
+//    public void enterEmailInputField(String emailValue) {
+//        emailInputField.sendKeys(emailValue);
+//    }
+//
+//    public void enterPasswordInputField(String passwordValue) {
+//        passwordInputField.sendKeys(passwordValue);
+//    }
+//
+//    public void enterConfirmPasswordInputField(String confirmPasswordValue) {
+//        confirmPasswordInputField.sendKeys(confirmPasswordValue);
+//
+//    }
+//
+//    public void clickRegistrationButton() {
+//        registrationButton.click();
+//    }
+//
+//    public void checkRegistrationButtonDisabled() {
+//        assertFalse(registrationButton.isEnabled());
+//
+//    }
+//
+//    public void checkTextErrorEmailAlreadyExists(String textErrorEmailAlreadyExistsValue){
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        WebElement errorElement = wait.until(ExpectedConditions.visibilityOf(textErrorEmailAlreadyExists));
+//        assertEquals(textErrorEmailAlreadyExistsValue,textErrorEmailAlreadyExists.getText());
+//    }
+//
+    public  void checkLinkContactUsNotDisplayed(){
+        assertFalse(linkContactUs.isDisplayed());
+    }
+    public void checkLinkAboutUsNotDisplayed(){
+        assertFalse(linkAboutUs.isDisplayed());
+    }
+    public void checkLoginLinkNavigatesToLoginPage(){
+        linkLogin.click();
+        assertEquals("http://chatty.telran-edu.de:8089/login", driver.getCurrentUrl());
+    }
+
+
 
 }

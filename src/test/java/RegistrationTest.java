@@ -10,26 +10,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RegistrationTest extends BaseTest {
 
     @Test
-    void successfulRegistrationWithValidData() throws InterruptedException {
+    void successfulRegistrationWithValidData() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLinkSingUp();
+        loginPage.clickLinkSignUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.enterEmailInputField("2000John@gmail.com");
+        registrationPage.enterEmailInputField("John2001@gmail.com");
         registrationPage.enterPasswordInputField("ukraine25");
         registrationPage.enterConfirmPasswordInputField("ukraine25");
-        sleep(2000);
         registrationPage.clickRegistrationButton();
-        sleep(2000);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/homeblog"));
-        assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
-        sleep(2000);
+        HomePage homePage = new HomePage(driver);
+        homePage.checkGoToHomePage();
     }
 
     @Test
     void registrationWithEmailMissingComSuffix() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLinkSingUp();
+        loginPage.clickLinkSignUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.enterEmailInputField("2000John@gmail");
         registrationPage.enterPasswordInputField("ukraine25");
@@ -40,7 +36,7 @@ public class RegistrationTest extends BaseTest {
     @Test
     void registrationWithInvalidEmailMissingAtSymbol() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLinkSingUp();
+        loginPage.clickLinkSignUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.enterEmailInputField("2000JohnJohngmail");
         registrationPage.enterPasswordInputField("ukraine25");
@@ -51,7 +47,7 @@ public class RegistrationTest extends BaseTest {
     @Test
     void registrationWithEmptyEmail() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLinkSingUp();
+        loginPage.clickLinkSignUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.enterPasswordInputField("ukraine25");
         registrationPage.enterConfirmPasswordInputField("ukraine25");
@@ -61,7 +57,7 @@ public class RegistrationTest extends BaseTest {
     @Test
     void registrationWithExistingEmail() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLinkSingUp();
+        loginPage.clickLinkSignUp();
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.enterEmailInputField("2000John@gmail.com");
         registrationPage.enterPasswordInputField("ukraine25");
@@ -94,13 +90,37 @@ public class RegistrationTest extends BaseTest {
     @Test
     void registrationButtonIsDisabledWhenFieldsAreEmpty() {}
 
+  //  @Test
+  //  void verifyLoginLinkNavigatesToLoginPage() {}
+//    @Test
+  //  void verifySignInLinkContactUsNotDisplayed() {}
+
+  //  @Test
+            // void verifySignInLinkAboutUsNotDisplayed() {}
     @Test
-    void verifyLoginLinkNavigatesToLoginPage() {}
+    void verifyLoginLinkNavigatesToLoginPage(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLinkSignUp();
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.checkLoginLinkNavigatesToLoginPage();
+
+    }
     @Test
-    void verifySignInLinkContactUsNotDisplayed() {}
+    void verifySignInLinkContactUsNotDisplayed() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLinkSignUp();
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.checkLinkContactUsNotDisplayed();
+
+    }
 
     @Test
-    void verifySignInLinkAboutUsNotDisplayed() {}
+    void verifySignInLinkAboutUsNotDisplayed() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLinkSignUp();
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.checkLinkAboutUsNotDisplayed();
+    }
 }
 
 

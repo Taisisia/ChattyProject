@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void successLoginValidData() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2001@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -25,6 +25,8 @@ public class LoginTest extends BaseTest {
         assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
 
     }
+
+
 
     @Test
     public void invalidEmail() {
@@ -97,7 +99,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void redirectToHomePageAfterSuccessfulLogin() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2001@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
