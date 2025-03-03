@@ -89,8 +89,6 @@ public class LoginPage extends BasePage {
     }
 
     public void checkVerifyPasswordMasking() {
-        //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //  wait.until(ExpectedConditions.visibilityOf(emailInputField));//passwordInputField)).sendKeys();
         String fieldType = passwordInputField.getAttribute("type");
         assertEquals("password", fieldType);
     }
@@ -102,6 +100,8 @@ public class LoginPage extends BasePage {
     public void clickLinkSignUp() {
         linkSignUp.click();
     }
+
+
 
     public void successLogin(String emailValue, String passwordValue) {
         enterTextToElement(emailValue, emailInputField);

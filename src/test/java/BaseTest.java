@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,13 +7,13 @@ public class BaseTest {
     ChromeDriver driver;
 
 
-
     @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver",
                 "C:\\Users\\User\\OneDrive\\Документы\\Lessons\\QA\\chromedriver-win64\\chromedriver-win64_133.0.6943.53\\chromedriver.exe");
+
         driver = new ChromeDriver();
-        driver.manage().window().maximize();  // Разворачиваем окно на весь экран
+        driver.manage().window().maximize();
         driver.get("http://chatty.telran-edu.de:8089/login");
     }
 
@@ -21,7 +22,5 @@ public class BaseTest {
         driver.quit();
     }
 
-
-    User validUser = new User("John2001@gmail.com", "ukraine25");
 
 }

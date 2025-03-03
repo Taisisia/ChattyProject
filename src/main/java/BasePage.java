@@ -26,4 +26,5 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
+
 }

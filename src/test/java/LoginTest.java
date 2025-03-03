@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
+
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LoginTest extends BaseTest {
 
 
@@ -17,7 +20,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void successLoginValidData() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2001@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -25,8 +28,6 @@ public class LoginTest extends BaseTest {
         assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
 
     }
-
-
 
     @Test
     public void invalidEmail() {
@@ -36,17 +37,18 @@ public class LoginTest extends BaseTest {
         loginPage.clickOnLoginButton();
         loginPage.checkTextError("User not found. Please register.");
     }
+
     @Test
-    void loginWithEmptyEmail()  {
+    void loginWithEmptyEmail() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterPassword("ukraine25");
         loginPage.checkLoginButtonDisabled();
     }
 
     @Test
-    public void invalidPassword() throws InterruptedException {
+    public void invalidPassword()  {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("Ukraine100");
         loginPage.clickOnLoginButton();
         loginPage.checkTextError("An error occurred while logging in. Please try again later");
@@ -56,7 +58,7 @@ public class LoginTest extends BaseTest {
     @Test
     void loginEmptyPassword() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.clickOnLoginButton();
         loginPage.checkTextError("Invalid email or password. Please try again.");
 
@@ -68,8 +70,9 @@ public class LoginTest extends BaseTest {
         loginPage.checkLoginButtonDisabled();
 
     }
+
     @Test
-    void verifyPasswordMasking () {
+    void verifyPasswordMasking() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterPassword("Ukraine100");
         loginPage.checkVerifyPasswordMasking();
@@ -82,10 +85,11 @@ public class LoginTest extends BaseTest {
         loginPage.enterPassword("Ukraine100");
         loginPage.checkLoginButtonDisabled();
     }
+
     @Test
     void loginWithSpacesInPassword() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2000@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("          ");
         loginPage.checkLoginButtonDisabled();
     }
@@ -99,7 +103,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void redirectToHomePageAfterSuccessfulLogin() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("John2001@gmail.com");
+        loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));

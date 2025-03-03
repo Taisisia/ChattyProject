@@ -1,30 +1,29 @@
 import org.junit.jupiter.api.Test;
 
-import static java.lang.Thread.sleep;
 
 public class AboutTest extends BaseTest {
     @Test
-    public void checkHeaderText() throws InterruptedException {
+    public void checkHeaderText()  {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2000@gmail.com", "ukraine25");
+        loginPage.successLogin("John2025@gmail.com", "ukraine25");
         HomePage homePage = new HomePage(driver);
         homePage.clickAbout();
         AboutPage aboutPage = new AboutPage(driver);
         aboutPage.checkHeader("About Chatty");
     }
     @Test
-    public void checkTextPartFirst() throws InterruptedException {
+    public void checkTextPartFirst() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2000@gmail.com", "ukraine25");
+        loginPage.successLogin("John2025@gmail.com", "ukraine25");
         HomePage homePage = new HomePage(driver);
         homePage.clickAbout();
         AboutPage aboutPage = new AboutPage(driver);
         aboutPage.checkTextPartFirst( "Chatty is a social network ");
     }
     @Test
-    public void checkTextPartSecond() throws InterruptedException {
+    public void checkTextPartSecond() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2000@gmail.com", "ukraine25");
+        loginPage.successLogin("John2025@gmail.com", "ukraine25");
         HomePage homePage = new HomePage(driver);
         homePage.clickAbout();
         AboutPage aboutPage = new AboutPage(driver);

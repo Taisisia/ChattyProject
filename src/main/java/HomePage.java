@@ -4,11 +4,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HomePage {
     WebDriver driver;
@@ -22,7 +19,6 @@ public class HomePage {
     private WebElement createAPost;
     @FindBy(css = "[href=\"/userprofile\"]")
     private WebElement yourProfile;
-
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/div/div/div[2]/p")
     private WebElement dropdownMenu;
     @FindBy(css = "[data-test=\"profileEmail\"]")
@@ -45,7 +41,6 @@ public class HomePage {
     private WebElement descriptionPost;
     @FindBy(css = "[name=\"content\"]")
     private WebElement contentField;
-
     @FindBy(css = "[class=\"post-content__body\"]")
     private WebElement contentPost;
     @FindBy(id = "publishDate")
@@ -61,7 +56,7 @@ public class HomePage {
 
     public void createNewPost() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf( createAPost));
+        wait.until(ExpectedConditions.visibilityOf(createAPost));
         createAPost.click();
     }
 
@@ -157,9 +152,27 @@ public class HomePage {
         wait.until(ExpectedConditions.visibilityOf(labelDraftCheckbox));
         labelDraftCheckbox.click();
     }
-    public void clickAbout (){
+
+    public void clickAbout() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOf(aboutLink));
         aboutLink.click();
     }
+
+    @FindBy(css = "[href='/contact']")
+    private WebElement contactLink;
+
+    public void checkHomePage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/homeblog"));
+        assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
+        wait.until(ExpectedConditions.visibilityOf(headerLogo));
+        assert headerLogo.isDisplayed();
+
+    }
+
+    public void clickContactLink() {
+        contactLink.click();
+    }
 }
+

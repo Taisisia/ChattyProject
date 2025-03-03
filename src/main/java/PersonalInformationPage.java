@@ -83,12 +83,7 @@ public class PersonalInformationPage extends BasePage {
 
     public void downloadAvatar() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        // avatar.click();
-
         avatar.sendKeys("C:/Users/User/IdeaProjects/ChattyProjects/src/test/resources/Oppenheimer.jpg");
-        //  avatar.sendKeys("C:/Users/User/IdeaProjects/ChattyProjects/src/test/resources/Oppenheimer.jpg");
-        // wait.until(ExpectedConditions.visibilityOf( avatarDownload));
-        //  avatarDownload.isDisplayed();
     }
 
     public void clickChangePasswordButton() {

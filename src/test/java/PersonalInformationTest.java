@@ -1,8 +1,10 @@
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.Thread.sleep;
 
 public class PersonalInformationTest extends BaseTest {
+    Faker faker =new Faker();
     @Test
     public void verifyPersonalInformationIsDisplayed() {
         LoginPage loginPage = new LoginPage(driver);
@@ -24,31 +26,40 @@ public class PersonalInformationTest extends BaseTest {
         personalInformationPage.enterName("Johni");
         personalInformationPage.enterSurname("Dou");
         personalInformationPage.enterPhone("+489067236457");
-      //  personalInformationPage.downloadAvatar();
-      //  sleep(5000);
         personalInformationPage.clickProfileSaveButton();
 
     }
 
     @Test
-    void successfulChangePassword() throws InterruptedException {
+    void successfulChangePassword()  {
+        String emailRandom = faker.internet().emailAddress();
+        String passwordRandom = faker.internet().password();
+        String passwordChangeRandom = faker.internet().password();
+
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2001@gmail.com", "ukraine25");
+        loginPage.clickLinkSignUp();
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.enterEmailInputField(emailRandom );
+        registrationPage.enterPasswordInputField(passwordRandom);
+        registrationPage.enterConfirmPasswordInputField(passwordRandom);
+        registrationPage.clickRegistrationButton();
+
         HomePage homePage = new HomePage(driver);
         homePage.clickDropDownMenu();
         homePage.clickYourProfile();
         PersonalInformationPage personalInformationPage = new PersonalInformationPage(driver);
         personalInformationPage.clickChangePasswordButton();
-        personalInformationPage.enterOldPassword("ukraine25");
-        personalInformationPage.enterNewPassword("ukraine26");
-        personalInformationPage.enterConfirmNewPassword("ukraine26");
+        personalInformationPage.enterOldPassword(passwordRandom);
+        personalInformationPage.enterNewPassword(passwordChangeRandom);
+        personalInformationPage.enterConfirmNewPassword(passwordChangeRandom);
         personalInformationPage.clickSaveButtonChangePassword();
     }
 
     @Test
-    void cannotEditPersonalInformationWithInvalidFieldName() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2001@gmail.com", "ukraine25");
+    void cannotEditPersonalInformationWithInvalidFieldName()  {
+
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.registrationUserRandom();
         HomePage homePage = new HomePage(driver);
         homePage.clickDropDownMenu();
         homePage.clickYourProfile();
@@ -59,9 +70,9 @@ public class PersonalInformationTest extends BaseTest {
     }
 
     @Test
-    void cannotEditPersonalInformationWithEmptyName() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2001@gmail.com", "ukraine25");
+    void cannotEditPersonalInformationWithEmptyName() {
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.registrationUserRandom();
         HomePage homePage = new HomePage(driver);
         homePage.clickDropDownMenu();
         homePage.clickYourProfile();
@@ -74,8 +85,8 @@ public class PersonalInformationTest extends BaseTest {
 
     @Test
     void cannotEditPersonalInformationWithInvalidFieldSurname() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2001@gmail.com", "ukraine25");
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.registrationUserRandom();
         HomePage homePage = new HomePage(driver);
         homePage.clickDropDownMenu();
         homePage.clickYourProfile();
@@ -87,8 +98,8 @@ public class PersonalInformationTest extends BaseTest {
 
     @Test
     void cannotEditPersonalInformationWithEmptySurname() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2001@gmail.com", "ukraine25");
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.registrationUserRandom();
         HomePage homePage = new HomePage(driver);
         homePage.clickDropDownMenu();
         homePage.clickYourProfile();
@@ -100,8 +111,8 @@ public class PersonalInformationTest extends BaseTest {
 
     @Test
     void cannotEditPersonalInformationWithInvalidDate() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2001@gmail.com", "ukraine25");
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.registrationUserRandom();
         HomePage homePage = new HomePage(driver);
         homePage.clickDropDownMenu();
         homePage.clickYourProfile();
@@ -113,8 +124,8 @@ public class PersonalInformationTest extends BaseTest {
 
     @Test
     void cannotEditPersonalInformationWithEmptyFieldPhone() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.successLogin("John2001@gmail.com", "ukraine25");
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.registrationUserRandom();
         HomePage homePage = new HomePage(driver);
         homePage.clickDropDownMenu();
         homePage.clickYourProfile();
