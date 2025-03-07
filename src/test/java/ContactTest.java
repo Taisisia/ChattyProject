@@ -10,17 +10,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContactTest extends BaseTest {
     @Test
-  public void fieldIsDisplayed() {
-LoginPage loginPage = new LoginPage(driver);
+    public void fieldIsDisplayed() throws InterruptedException {
+
+        LoginPage loginPage = new LoginPage(driver);
+
         loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.urlToBe("http://chatty.telran-edu.de:8089/homeblog"));
-    assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
+        assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
 
 
-    HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.clickContactLink();
 
         ContactPage contactPage = new ContactPage(driver);
@@ -57,17 +59,14 @@ LoginPage loginPage = new LoginPage(driver);
         assertEquals("http://chatty.telran-edu.de:8089/contact", driver.getCurrentUrl());
 
 
-
-
     }
 
     @Test
-    void contactWithEmptyName() throws InterruptedException {
+    void contactWithEmptyName()  {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("ukraine25");
         loginPage.clickOnLoginButton();
-
 
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -85,7 +84,6 @@ LoginPage loginPage = new LoginPage(driver);
                 "и я не могу нормально использовать сайт.");
         contactPage.clickSendMessageButton();
         assertEquals("http://chatty.telran-edu.de:8089/contact", driver.getCurrentUrl());
-        //sleep(3000);
     }
 
     @Test
@@ -102,17 +100,17 @@ LoginPage loginPage = new LoginPage(driver);
         homePage.clickContactLink();
         ContactPage contactPage = new ContactPage(driver);
         contactPage.enterNameInputField("Ammar");
-        //contactPage.enterEmailInputField("smith1990@gamil.com");
         contactPage.enterMessageInputField("I need help. " +
                 "I have a system issue and can’t use the website properly.\n" +
                 "Мне нужна помощь. У меня проблема с системой, " +
                 "и я не могу нормально использовать сайт.");
         contactPage.clickSendMessageButton();
-        assertEquals("http://chatty.telran-edu.de:8089/contact" 
+        assertEquals("http://chatty.telran-edu.de:8089/contact"
                 , driver.getCurrentUrl());
 
 
     }
+
     @Test
     void contactWithEmptyMessage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
@@ -128,15 +126,11 @@ LoginPage loginPage = new LoginPage(driver);
         ContactPage contactPage = new ContactPage(driver);
         contactPage.enterNameInputField("Ammar");
         contactPage.enterEmailInputField("John2000@gmail.com");
-//        contactPage.enterMessageInputField("I need help. " +
-//                "I have a system issue and can’t use the website properly.\n" +
-//                "Мне нужна помощь. У меня проблема с системой, " +
-//                "и я не могу нормально использовать сайт.");
         contactPage.clickSendMessageButton();
         assertEquals("http://chatty.telran-edu.de:8089/contact"
                 , driver.getCurrentUrl());
-      //sleep(5000);
     }
+
     @Test
     void contactWithInvalidName() {
         LoginPage loginPage = new LoginPage(driver);
@@ -160,6 +154,7 @@ LoginPage loginPage = new LoginPage(driver);
         assertEquals("http://chatty.telran-edu.de:8089/contact"
                 , driver.getCurrentUrl());
     }
+
     @Test
     void contactWithInvalidEmail() {
         LoginPage loginPage = new LoginPage(driver);
@@ -184,6 +179,7 @@ LoginPage loginPage = new LoginPage(driver);
                 , driver.getCurrentUrl());
 
     }
+
     @Test
     void contactWithInvalidMessage() {
         LoginPage loginPage = new LoginPage(driver);

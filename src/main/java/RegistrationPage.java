@@ -82,10 +82,6 @@ public class RegistrationPage {
         linkLogin.click();
         assertEquals("http://chatty.telran-edu.de:8089/login", driver.getCurrentUrl());
     }
-    public void checkGoTOHomePage(){
-
-    }
-
 
 }
 

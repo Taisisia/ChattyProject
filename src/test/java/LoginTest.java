@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
+
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LoginTest extends BaseTest {
 
 
@@ -34,15 +37,16 @@ public class LoginTest extends BaseTest {
         loginPage.clickOnLoginButton();
         loginPage.checkTextError("User not found. Please register.");
     }
+
     @Test
-    void loginWithEmptyEmail()  {
+    void loginWithEmptyEmail() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterPassword("ukraine25");
         loginPage.checkLoginButtonDisabled();
     }
 
     @Test
-    public void invalidPassword() throws InterruptedException {
+    public void invalidPassword()  {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail("John2025@gmail.com");
         loginPage.enterPassword("Ukraine100");
@@ -66,8 +70,9 @@ public class LoginTest extends BaseTest {
         loginPage.checkLoginButtonDisabled();
 
     }
+
     @Test
-    void verifyPasswordMasking () {
+    void verifyPasswordMasking() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterPassword("Ukraine100");
         loginPage.checkVerifyPasswordMasking();
@@ -80,6 +85,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterPassword("Ukraine100");
         loginPage.checkLoginButtonDisabled();
     }
+
     @Test
     void loginWithSpacesInPassword() {
         LoginPage loginPage = new LoginPage(driver);
