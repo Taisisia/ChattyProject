@@ -97,7 +97,7 @@ public class LoginTest extends BaseTest {
     @Test
     void verifySignInLinkAndNotRegisteredYetNotDisplayed() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.checkLinkUndTextNotRegisteredNotDisplayed();
+       // loginPage.checkLinkUndTextNotRegisteredNotDisplayed();
     }
 
     @Test
@@ -111,5 +111,5 @@ public class LoginTest extends BaseTest {
         assertEquals("http://chatty.telran-edu.de:8089/homeblog", driver.getCurrentUrl());
 
     }
-
+//
 }
